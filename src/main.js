@@ -1,6 +1,7 @@
 import * as THREE from 'three';
+import './style.css';
 
-const time = document.querySelector("#time")
+const time = document.querySelector("#time");
 
 // clock helper function
 function updateClock() {

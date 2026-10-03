@@ -1,1 +1,64 @@
-body { background-color: black; }
+:root {
+  color-scheme: dark;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #f4f7fb;
+  background: #02040a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #02040a;
+}
+
+body {
+  position: relative;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: block;
+}
+
+#timeDiv {
+  position: fixed;
+  z-index: 1;
+  top: clamp(1.5rem, 5vw, 4.5rem);
+  left: clamp(1.5rem, 6vw, 6rem);
+  pointer-events: none;
+}
+
+#time {
+  margin: 0;
+  color: #f4f7fb;
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(3.5rem, 10vw, 8.5rem);
+  font-weight: 400;
+  letter-spacing: -0.08em;
+  line-height: 0.9;
+  text-shadow:
+    0 0 1.5rem rgba(85, 221, 255, 0.18),
+    0 0.25rem 2rem rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 600px) {
+  #timeDiv {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+
+  #time {
+    font-size: clamp(3rem, 20vw, 5rem);
+  }
+}
