@@ -1,5 +1,16 @@
 import * as THREE from 'three';
 
+const textDiv = document.getElementById("#textDiv")
+
+// clock helper function
+function updateClock() {
+  const now = new Date();
+
+  const hour = now.getTime
+  console.log(hour);
+}
+updateClock();
+
 const scene = new THREE.Scene(); 
 scene.background = new THREE.Color(0x000000); 
 
