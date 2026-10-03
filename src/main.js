@@ -17,13 +17,21 @@ setInterval(updateClock, 1000)
 // ISS Positional Data
 const URL = "https://api.wheretheiss.at/v1/satellites/25544"
 async function getLocation() {
-  const response = await fetch(URL)
-  const dataISS = await response.json()
-  
-  // fetch lat, lon
-  const lat = dataISS.latitude
-  const lon = dataISS.longitude
-  console.log([lat,lon])
+  try {
+    const response = await fetch(URL)
+    if (!response.ok) throw new Error(`Request failed: ${response.status}`)
+
+    const dataISS = await response.json()
+
+    // fetch lat, lon
+    const lat = dataISS.latitude
+    const lon = dataISS.longitude
+    const alt = dataISS.altitude
+    const velocity = dataISS.velocity
+    console.log([lat, lon, alt, velocity])
+  } catch (error) {
+    console.error('Unable to fetch ISS location:', error)
+  }
 }
 getLocation();
 
@@ -40,7 +48,7 @@ const camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.inner
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = THREE.PCFShadowMap;
 document.body.appendChild( renderer.domElement ); 
 
 const geometry = new THREE.SphereGeometry(15, 32, 64);
