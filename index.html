@@ -6,11 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>What's Above Me?</title>
     <style>
-      body { margin: 0; overflow: hidden; }
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: black;
+      }
+      
+      /* Sets the container background to black and text to white */
+      #timeDiv {
+        background-color: black;
+        color: white;
+      }
+      
+      /* Removes the white background from the text element itself */
+      #time {
+        background-color: transparent;
+      }
     </style>
   </head>
   <body>
-    <div id="timeDiv"></div>
+    <div id="timeDiv">
+      <h1 id="time"></h1>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

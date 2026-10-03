@@ -1,16 +1,19 @@
 import * as THREE from 'three';
 
-const textDiv = document.getElementById("#textDiv")
+const time = document.querySelector("#time")
 
 // clock helper function
 function updateClock() {
   const now = new Date();
 
-  const hour = now.getTime
-  console.log(hour);
+  const hour = now.getHours().toString().padStart(2, '0');
+  const min = now.getMinutes().toString().padStart(2, '0');
+  time.innerHTML =  `${hour}:${min}`
 }
-updateClock(); // time TODO
+updateClock();
+setInterval(updateClock, 1000)
 
+// ThreeJS Scene
 const scene = new THREE.Scene(); 
 scene.background = new THREE.Color(0x000000); 
 
