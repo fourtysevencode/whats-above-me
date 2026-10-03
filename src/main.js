@@ -9,7 +9,7 @@ function updateClock() {
   const hour = now.getTime
   console.log(hour);
 }
-updateClock();
+updateClock(); // time TODO
 
 const scene = new THREE.Scene(); 
 scene.background = new THREE.Color(0x000000); 
