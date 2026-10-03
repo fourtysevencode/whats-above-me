@@ -13,9 +13,16 @@
     <title>What's Above Me?</title>
   </head>
   <body>
-    <div id="timeDiv">
-      <h1 id="time"></h1>
+    <div id="home">
+      <div id="timeDiv">
+        <h1 id="time"></h1>
+      </div>
+
+      <!-- Shortcut tiles (built in src/main.js, saved in localStorage) -->
+      <nav class="shortcuts" id="shortcuts"></nav>
     </div>
+
+    <div id="issInfo" hidden>Loading ISS data…</div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

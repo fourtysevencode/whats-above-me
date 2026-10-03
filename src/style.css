@@ -31,7 +31,8 @@ canvas {
   display: block;
 }
 
-#timeDiv {
+/* Clock with the shortcut tiles underneath, pinned to the top left. */
+#home {
   position: fixed;
   z-index: 1;
   top: clamp(1.5rem, 5vw, 4.5rem);
@@ -52,8 +53,61 @@ canvas {
     0 0.25rem 2rem rgba(0, 0, 0, 0.45);
 }
 
+#issInfo {
+  position: fixed;
+  z-index: 2;
+  min-width: 12rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(85, 221, 255, 0.5);
+  border-radius: 0.5rem;
+  background: rgba(2, 4, 10, 0.85);
+  backdrop-filter: blur(6px);
+  font-size: 0.875rem;
+  pointer-events: none;
+  /* Sit centered above the ISS, leaving room for the arrow. */
+  transform: translate(-50%, calc(-100% - 4rem));
+}
+
+#issInfo::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 0.5rem solid transparent;
+  border-top-color: rgba(85, 221, 255, 0.5);
+  transform: translateX(-50%);
+}
+
+#issInfo[hidden] {
+  display: none;
+}
+
+#issInfo h2 {
+  margin: 0 0 0.5rem;
+  color: #55ddff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#issInfo dl {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.25rem 1rem;
+  margin: 0;
+}
+
+#issInfo dt {
+  color: rgba(244, 247, 251, 0.6);
+}
+
+#issInfo dd {
+  margin: 0;
+  font-family: 'DM Mono', monospace;
+  text-align: right;
+}
+
 @media (max-width: 600px) {
-  #timeDiv {
+  #home {
     top: 1.5rem;
     left: 1.5rem;
   }
@@ -61,4 +115,74 @@ canvas {
   #time {
     font-size: clamp(3rem, 20vw, 5rem);
   }
+}
+
+/* Shortcut tiles: square icon with the name underneath */
+.shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  /* Keep tiles left-aligned with the clock's first digit. */
+  padding-left: 0.25rem;
+  pointer-events: auto;
+}
+
+.shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 4.5rem;
+  color: #f4f7fb;
+  text-decoration: none;
+  /* Reset button styles so the "+" tile matches the links */
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.shortcut-add {
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: rgba(244, 247, 251, 0.7);
+}
+
+.shortcut-icon {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.shortcut-icon img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.shortcut:hover .shortcut-icon,
+.shortcut:focus-visible .shortcut-icon {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(85, 221, 255, 0.5);
+}
+
+.shortcut:focus-visible {
+  outline: none;
+}
+
+.shortcut-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
