@@ -107,6 +107,10 @@ canvas {
 }
 
 @media (max-width: 600px) {
+  #credits {
+    left: 1.5rem;
+  }
+
   #home {
     top: 1.5rem;
     left: 1.5rem;
@@ -115,6 +119,28 @@ canvas {
   #time {
     font-size: clamp(3rem, 20vw, 5rem);
   }
+}
+
+/* Links pinned to the bottom left */
+#credits {
+  position: fixed;
+  z-index: 1;
+  bottom: clamp(1rem, 3vw, 2rem);
+  left: clamp(1.5rem, 6vw, 6rem);
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.85rem;
+}
+
+#credits a {
+  color: rgba(244, 247, 251, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+#credits a:hover,
+#credits a:focus-visible {
+  color: #55ddff;
 }
 
 /* Shortcut tiles: square icon with the name underneath */

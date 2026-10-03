@@ -65,6 +65,18 @@ addButton.addEventListener('click', () => {
   renderShortcuts();
 });
 
+// Inside the extension, Chrome serves favicons from its own cache ("favicon" permission).
+// On the Vite dev server there's no extension API, so fall back to Google's favicon service.
+function faviconURL(pageUrl) {
+  if (globalThis.chrome?.runtime?.id) {
+    const url = new URL(chrome.runtime.getURL('/_favicon/'));
+    url.searchParams.set('pageUrl', pageUrl);
+    url.searchParams.set('size', '64');
+    return url.toString();
+  }
+  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(new URL(pageUrl).hostname)}&sz=64`;
+}
+
 function renderShortcuts() {
   shortcutsEl.innerHTML = '';
   for (const { name, url } of shortcuts) {
@@ -78,7 +90,7 @@ function renderShortcuts() {
     const icon = document.createElement('span');
     icon.className = 'shortcut-icon';
     const img = document.createElement('img');
-    img.src = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(new URL(url).hostname)}&sz=64`;
+    img.src = faviconURL(url);
     img.alt = '';
     icon.append(img);
 
