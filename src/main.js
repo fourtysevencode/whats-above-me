@@ -5,7 +5,7 @@ scene.background = new THREE.Color(0x000000);
 
 // Sphere Earth
 const textureLoader = new THREE.TextureLoader();
-const texture = textureLoader.load('public/textures/2k_earth_daymap.jpg');
+const texture = textureLoader.load('textures/2k_earth_daymap.jpg');
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 ); 
 
 const renderer = new THREE.WebGLRenderer();
