@@ -14,6 +14,19 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000)
 
+// ISS Positional Data
+const URL = "https://api.wheretheiss.at/v1/satellites/25544"
+async function getLocation() {
+  const response = await fetch(URL)
+  const dataISS = await response.json()
+  
+  // fetch lat, lon
+  const lat = dataISS.latitude
+  const lon = dataISS.longitude
+  console.log([lat,lon])
+}
+getLocation();
+
 // ThreeJS Scene
 const scene = new THREE.Scene(); 
 scene.background = new THREE.Color(0x000000); 
@@ -30,7 +43,7 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild( renderer.domElement ); 
 
-const geometry = new THREE.SphereGeometry(15, 32, 16);
+const geometry = new THREE.SphereGeometry(15, 32, 64);
 // Changed color slightly so you can see it against the white background
 const material = new THREE.MeshStandardMaterial( { map: texture } ); 
 const sphere = new THREE.Mesh( geometry, material ); 
