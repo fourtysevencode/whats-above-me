@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import './style.css';
+import { placeAt } from './location.js';
 
 const time = document.querySelector("#time");
 
@@ -130,10 +131,12 @@ async function getLocation() {
     const lon = dataISS.longitude
     const alt = dataISS.altitude
     const velocity = dataISS.velocity
+    const place = await placeAt(lat, lon)
 
     issInfo.innerHTML = `
       <h2>ISS</h2>
       <dl>
+        <dt>Over</dt><dd>${place.name}</dd>
         <dt>Latitude</dt><dd>${lat.toFixed(2)}°</dd>
         <dt>Longitude</dt><dd>${lon.toFixed(2)}°</dd>
         <dt>Altitude</dt><dd>${alt.toFixed(1)} km</dd>
