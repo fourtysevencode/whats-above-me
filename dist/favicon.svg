@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
   <defs>
+    <radialGradient id="sky" cx="50%" cy="45%" r="70%">
+      <stop offset="0" stop-color="#0b1a33"/>
+      <stop offset="1" stop-color="#02040a"/>
+    </radialGradient>
     <radialGradient id="ocean" cx="38%" cy="34%" r="75%">
       <stop offset="0" stop-color="#3fa7f0"/>
       <stop offset="0.55" stop-color="#1557a8"/>
@@ -19,6 +23,15 @@
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
+
+  <rect width="128" height="128" rx="28" fill="url(#sky)"/>
+  <g fill="#f4f7fb">
+    <circle cx="22" cy="24" r="1.2"/>
+    <circle cx="104" cy="18" r="0.9"/>
+    <circle cx="112" cy="98" r="1.1"/>
+    <circle cx="18" cy="100" r="0.8"/>
+    <circle cx="40" cy="12" r="0.7"/>
+  </g>
 
   <g transform="rotate(-20 64 64)">
     <!-- far side of the orbit, behind the Earth -->
