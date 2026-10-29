@@ -9,6 +9,11 @@ permissions:
   pages: write
   id-token: write
 
+# Queue deploys instead of running them in parallel, which makes the later one fail.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
