@@ -6,19 +6,14 @@
 
 ## Installation
 
-1. Download `dist.crx` from the [Releases page](https://github.com/fourtysevencode/whats-above-me/releases), or from the root of this repository.
-2. In Chrome, open `chrome://extensions`.
-3. Turn on **Developer mode** using the toggle in the top-right corner.
-4. Drag `dist.crx` onto the `chrome://extensions` page and drop it.
-5. Click **Add extension** when Chrome asks.
-6. Open a new tab. You should see the Earth, the ISS and the clock.
+Install **What's Above Me?** from the Chrome Web Store: TBA
 
-### If Chrome blocks or disables the `.crx`
-On Windows and macOS, Chrome often refuses extensions that aren't from the Chrome Web Store, or installs them already turned off. If that happens, load the extension unpacked instead:
+Then open a new tab. You should see the Earth, the ISS and the clock.
 
-1. Make a copy of `dist.crx` and rename the copy to `dist.zip`.
-2. Unzip it into a folder. A `.crx` is a zip file with an extra header. If your unzip tool complains, try a different one, such as 7-Zip or `unzip` in a terminal. Alternatively, build the folder yourself (see [Development](#development)).
-3. In `chrome://extensions`, with **Developer mode** on, click **Load unpacked** and choose that folder.
+### Install manually
+1. Download or clone this repository.
+2. In Chrome, open `chrome://extensions` and turn on **Developer mode** (top-right toggle).
+3. Click **Load unpacked** and choose the `dist` folder.
 
 When Chrome asks, accept the permissions:
 - **Favicons:** shows each shortcut's icon from Chrome's own favicon cache.
@@ -47,13 +42,6 @@ To test the extension from source:
 1. Run `npm run build`.
 2. In `chrome://extensions`, click **Load unpacked** and select the `dist` folder.
 3. After making changes, run `npm run build` again and click the reload ↻ icon on the extension's card.
-
-### Packing a new `.crx`
-1. In `chrome://extensions`, click **Pack extension**.
-2. Choose the `dist` folder as the extension root directory.
-3. Reuse the same private key (`dist.pem`) every time, so the extension keeps the same ID and updates install over the old version.
-
-Keep `dist.pem` private. It is listed in `.gitignore` and must never be committed.
 
 ## Project structure
 ```
