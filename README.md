@@ -6,7 +6,7 @@
 
 ## Installation
 
-Install **What's Above Me?** from the Chrome Web Store: TBA
+Install **What's Above Me?** from the Chrome Web Store: [Chrome Web Store Link](https://chromewebstore.google.com/detail/whats-above-me/lnioedkncoliicgmninddbbdkdfogfeh)
 
 Then open a new tab. You should see the Earth, the ISS and the clock.
 
